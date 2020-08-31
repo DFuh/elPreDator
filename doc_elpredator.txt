@@ -1,0 +1,29 @@
+'''
+elPreDator |dafu| 20200814
+'''
+
+++++ Purpose:
+reading and processing data from renewable energy plants
+
+-- read raw data:       make pandas-df
+-- clean raw data:      fill gaps, remove duplicates, change to final format 
+-- get statistics (?) 
+
+- for generating synthetic data:
+-- generate powercurve from profile
+-- 
+
+##########################################################
++++ aux +++     | containing auxiliary functions/tools
+
+
+++ read.py      | reading data -> df
+
+++ hlfiles.py   | handling files, create filelist and group/sort/filter
+
+++ prcssdata.py | clean data / fill gaps
+
+++ pwrcrv.py    | tools for ... powercurve
+
+----------------------------------------------------------
++++ test +++ 

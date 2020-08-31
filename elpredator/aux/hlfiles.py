@@ -30,19 +30,19 @@ def mk_fllst(pth, flnm = None, fltr_files=False, raw=False):
         print('Files in directory: ')
         for fl in fllst0:
             print(fl)
-        
+
         fltr = False
         if not fltr_files:
             if input('Filter by keyword? [y/n]').lower()=='y':
                 fltr = True
         else:
             fltr = True
-        
+
         if fltr:
             fllst0 = filter_by_keywords(fllst0)
-        
+
         #TODO: plant_list = self.extract_plantID(_fl)
-        
+
         #fltrd_lst.sort() # = sorted(self.fllst)
         if not raw:
             print(' --- sort list alphabetically --- ')
@@ -50,12 +50,13 @@ def mk_fllst(pth, flnm = None, fltr_files=False, raw=False):
         #self.fllst = fltrd_lst
         return fllst0
 
+
 def filter_by_keywords(fllst):
     k=0
     l = ['1st','2nd','3rd']
     fltr=True
     while fltr:
-        
+
         if k <2:
             strng1 = l[k]
         else:
@@ -70,9 +71,9 @@ def filter_by_keywords(fllst):
     def __init__():
         pass_fl)
                 print(_fl+'\n')
-        #fllst0 = fllst1.copy()            
+        #fllst0 = fllst1.copy()
         fltr= input('Do you want to filter by another keyword? [y/n]').lower()=='y'
-        
+
     return fllst1
 
 def find_plant_name(flnm_raw, splitdelim="_"):
@@ -80,13 +81,13 @@ def find_plant_name(flnm_raw, splitdelim="_"):
     read first filename and find plant-name
     (apply to following files)
     '''
-    
+
     flnm0, ftype = os.path.splitext(flnm_raw)
     bnm = os.path.basename(flnm0)
     dirnm = os.path.dirname(flnm0)
     if not input(f'Split by {splitdelim} ? [y/n]').lower()=='y':
         splitdelim = input('Enter delimiter to split by: ')
-    
+
     prnt = f'Basename: {bnm} contains {bnm.split(splitdelim)}'
     print(prnt)
     ec = False # entered correctly
@@ -111,7 +112,7 @@ def group_by_plant( flnm_specs): #TODO: details of flnm_specs
         ## ver1: plantID_name_dateStart?dateEnd
         ## ver2: plantID_dateStart?dateEnd
         ## ver3: plantID_dateStart?dateEnd_name
-        
+
         print('...group files...')
         #directory = self.pth + str(yr_in)+'/'
         #print('dir:',directory)
@@ -120,7 +121,7 @@ def group_by_plant( flnm_specs): #TODO: details of flnm_specs
         groups = defaultdict(list)
 
         #for filename in os.listdir(directory):
-        
+
         for filename in s_files:
             basename, extension = os.path.splitext(filename)
             bn2 = os.path.basename(filename) # Extract filename from whole path-name
@@ -131,10 +132,10 @@ def group_by_plant( flnm_specs): #TODO: details of flnm_specs
                 plant, nm, date = bn2.split('_') # split filename in plant_name, ..., start-date, end-date
             except:
                 plant, nm, start, end = bn2.split('_') # split filename in plant_name, ..., start-date, end-date
-            
+
             groups[plant].append([filename,start[3:],end[:-4]])
 
         for plnt in groups:#.keys():
             groups[str(plnt)].sort()
-            
+
         return groups

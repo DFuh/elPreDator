@@ -65,6 +65,8 @@ def rename_columns(df):
             ncols.append(strng)
         '''
         '''
+        -> template for switch:
+
         def sw_par(nm):
             switcher = {
                 'wind_list': 'jep',
@@ -80,9 +82,10 @@ def rename_columns(df):
                 11: "November",
                 12: "December"
             }
-            strng =  switcher.get(case, None)
+            strng =  switcher.get(nm, None)
             return strng
         '''
+        
         if 'Unnamed: 0' in df.columns:
             df = df.drop(['Unnamed: 0'], axis = 1) # drop column
         cols = df.columns

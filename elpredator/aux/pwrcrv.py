@@ -27,17 +27,18 @@ def logWindProf():
 
     # determine wind velocity at target height zt using rearranged log wind profile
     u_zt = u_zc*(np.log(zt/z0)/np.log(zc/z0))
-    pass
+    return
 
 
 def fit_pC():
     '''
     use curveFitting method to derive valid powerCurve from dataset
     '''
-    fitfun = pC_curveFit()
+
+    fitfun = pC_curveFit(x0 , y0)
     new_y = fitfun(new_x)
 
-    pass
+    return
 
 def pC_curveFit(x_in, y_in):
     '''

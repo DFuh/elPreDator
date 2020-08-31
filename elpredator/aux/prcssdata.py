@@ -22,6 +22,9 @@ def clean_df(df_in):
     clean dataFrame
     - remove non-plausible values within set limits
     - remove NaN in P
+
+    ## yet to be implemented:
+        - get PN (nominal/ rated power of plant) -> idea: average max P, round() to kW (2133.5 -> 2000)
     '''
 
 
@@ -31,8 +34,8 @@ def clean_df(df_in):
     df.set_index(stridx)
 
     ### df limits
-    wind_lim = [0, 35]
-    P_lim = [0, 1.2*PN]
+    wind_lim = [0, 35]  # // in m/s
+    P_lim = [0, 1.2*PN] # get PN ?
 
     for col in df.columns:
         if ('wind' in col.lower()) or ('vw' in col.lower()) or ('v_w' in col.lower()):
@@ -48,6 +51,10 @@ def clean_df(df_in):
 
 
 def cmpl_dates(df_in):
+        '''
+        complete dates (date-range)
+        
+        '''
 
         df = df_in.copy()
 
